@@ -12,10 +12,15 @@ export class ProductService {
   constructor(private http:HttpClient){}
   Url1=  `${this.baseUrl}/product/findAllProducts`;
   Url2=  `${this.baseUrl}/product/chooseproducts`;
+  Url3=  `${this.baseUrl}/product/findProductChoice`;
 
   getAllProduct()
   {
     return this.http.get<Product[]>(this.Url1);
+  }
+  getAllProductChoice()
+  {
+    return this.http.get<ProductChoice[]>(this.Url3);
   }
   productChoose(productChoice: ProductChoice)
   {
