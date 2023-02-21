@@ -1,0 +1,117 @@
+<div class="login-page">
+  <button class="btn btn-warning" routerLink="/TechTablet"  type="submit">Retour</button>
+  <div class="container">
+    <mat-card class="mat-elevation-z12">
+      <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+        <mat-tab label="login client">
+            <mat-card-content>
+              <form (ngSubmit)="boutonLogin()">
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="nom"
+                    required
+                    required [(ngModel)]="Utilisateur.nom" name="nom" value="{{Utilisateur.nom}}"> 
+                  <mat-icon matSuffix>nom</mat-icon>
+                </mat-form-field>
+                <mat-form-field>
+                  <input
+                    matInput
+                    placeholder="Password"
+                    type="password"
+                    required
+                    minlength="6"
+                    required [(ngModel)]="Utilisateur.mot_de_passe" name="mot_de_passe" value="{{Utilisateur.mot_de_passe}}"> 
+                  <mat-icon matSuffix>lock</mat-icon>
+                </mat-form-field>
+                <mat-checkbox>Remember Me!</mat-checkbox>
+                <button
+                  mat-raised-button
+                  color="primary"
+                  class="login-button">
+                  Sign In
+                </button>
+                <mat-spinner mode="indeterminate" *ngIf="submitting1" style="margin:0 auto;" [diameter]="70"></mat-spinner> 
+              </form>
+            </mat-card-content>
+        </mat-tab>
+        <mat-tab label="inscription client">
+          <mat-card-content>
+            <form (ngSubmit)="onSubmit()">
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Votre nom"
+                  required [(ngModel)]="Utilisateur.nom" name="nom">
+                <mat-icon matSuffix>perm_identity</mat-icon>
+              </mat-form-field>
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="Votre Email"
+                  required [(ngModel)]="Utilisateur.email" name="email">
+                <mat-icon matSuffix>email</mat-icon>
+              </mat-form-field>
+              <mat-form-field>
+                <input
+                  matInput
+                  placeholder="mot de passe"
+                  type="password"
+                  required
+                  minlength="6"
+                  required [(ngModel)]="Utilisateur.mot_de_passe" name="mot_de_passe">
+                <mat-icon matSuffix>lock</mat-icon>
+              </mat-form-field>
+              <div class="selectdiv">
+                <select  [(ngModel)]="nom"  name="nom" class="select">
+                    <option *ngFor="let role   of  Role"  value="{{role._id}}" >{{role.nom}}</option>
+                </select>
+              </div>
+              <button
+                mat-raised-button
+                color="primary"
+                type="submit"
+                class="login-button">
+                Sign Up
+              </button>
+              <mat-spinner mode="indeterminate" *ngIf="submitting2" style="margin:0 auto;" [diameter]="70"></mat-spinner> 
+            </form>
+          </mat-card-content>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+    <mat-card class="mat-elevation-z12">
+      <mat-tab-group mat-stretch-tabs class="example-stretched-tabs">
+        <mat-tab label="Login Admin">
+          <mat-card-content>
+            <form (ngSubmit)="ButtonLoginAtelier()">
+              <mat-form-field>
+                <input
+                  matInput
+                  required
+                  required [(ngModel)]="nomAtelier" name="nomAtelier" value="{{nomAtelier}}">
+                <mat-icon matSuffix>nom</mat-icon>
+              </mat-form-field>
+              <mat-form-field>
+                <input
+                  matInput
+                  type="password"
+                  required
+                  minlength="6"
+                  required [(ngModel)]="motdepasseAtelier"  name="motdepasseAtelier" value="{{motdepasseAtelier}}">
+                <mat-icon matSuffix>lock</mat-icon>
+              </mat-form-field>
+              <mat-checkbox>Remember Me!</mat-checkbox>
+              <button
+                mat-raised-button
+                color="primary"
+                class="login-button">
+                Sign In
+              </button>
+            </form>
+          </mat-card-content>
+      </mat-tab>
+      </mat-tab-group>
+    </mat-card>
+  </div>
+</div>
