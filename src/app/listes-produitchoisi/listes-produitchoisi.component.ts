@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,6 +13,7 @@ import { ProductService } from '../Service/product.service';
 })
 export class ListesProduitchoisiComponent {
   nameAdmin: any;
+  ProductChoice: ProductChoice = new ProductChoice();
   ListesProductChoisi!: ProductChoice[];
   pages: number = 1;
   totallength: any;
@@ -31,6 +33,29 @@ export class ListesProduitchoisiComponent {
         this.ListesProductChoisi=data;
       })
   }
+  deleteProduct(_id:any){
+      this.productservice.deleteProductChoice(_id)
+      .subscribe(data => {
+        console.log(data);
+        this.ProductChoice = new ProductChoice();
+        this._snackBar.open(" Produit  annulé ✔️✔️", 'Close',{
+          duration:2000,
+          verticalPosition: 'top',
+          horizontalPosition: 'right',
+          panelClass: ['success-alert']
+        });
+        this.router.navigate(['listesproduitchoisi']);
+        this.ngOnInit();
+      },
+      (error: HttpErrorResponse)=>{
+        this._snackBar.open( error.error.message , 'Close',{
+          duration:2000,
+          verticalPosition: 'top',
+          horizontalPosition: 'right',
+          panelClass: ['warning-alert']
+        });
+      }
+    )};
   pageChange(newPage: number){
     this.router.navigate([''],{queryParams: {page: newPage}});
   }

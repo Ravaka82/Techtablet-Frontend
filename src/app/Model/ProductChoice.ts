@@ -1,5 +1,5 @@
 export class ProductChoice{
-    id!: string;
+    _id!: string;
     idProduct!: string;
     status!: string;
 }

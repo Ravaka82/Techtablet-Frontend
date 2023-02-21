@@ -13,6 +13,7 @@ export class ProductService {
   Url1=  `${this.baseUrl}/product/findAllProducts`;
   Url2=  `${this.baseUrl}/product/chooseproducts`;
   Url3=  `${this.baseUrl}/product/findProductChoice`;
+  Url4=  `${this.baseUrl}/product/deleteProductChoice`;
 
   getAllProduct()
   {
@@ -25,5 +26,9 @@ export class ProductService {
   productChoose(productChoice: ProductChoice)
   {
     return this.http.post<ProductChoice>(this.Url2,productChoice);
+  }
+  deleteProductChoice(_id:any)
+  {
+    return this.http.delete<void>(`${this.Url4}/${_id}`);
   }
 }

@@ -41,12 +41,12 @@ export class AcceuilatelierComponent {
   }
 
   chooseProduct(){
-    console.log("idproduct"+this.ProductChoice.idProduct);
+    // console.log("idproduct"+this.ProductChoice.idProduct);
     this.productservice.productChoose(this.ProductChoice)
     .subscribe(data => {
       console.log(data);
       this.ProductChoice = new ProductChoice();
-      this._snackBar.open("CHOISI ✔️✔️", 'Close',{
+      this._snackBar.open("Produit choisi ✔️✔️", 'Close',{
         duration:2000,
         // css matsnack bar 
         verticalPosition: 'top',

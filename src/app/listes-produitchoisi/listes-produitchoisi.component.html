@@ -13,7 +13,7 @@
                         <div class="card-body">
                             <h5 class="card-title" style="color:chocolate;font-weight:bold">{{item.idProduct}}</h5>
                             <input type="hidden" [(ngModel)]=" item.idProduct" name="idProduct" value="{{item.idProduct}}">
-                            <button class="btn btn-sucess"  type="submit">annuler</button>
+                            <button class="btn btn-sucess"  (click)="deleteProduct(item._id)" type="submit">annuler</button>
                         </div>
                     </div>
                     </div>  
