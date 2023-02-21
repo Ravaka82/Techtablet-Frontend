@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { Product } from '../Model/Product';
+import { ProductService } from '../Service/product.service';
 
 @Component({
   selector: 'app-acceuilatelier',
@@ -8,19 +11,29 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./acceuilatelier.component.css']
 })
 export class AcceuilatelierComponent {
-  nameAtelier: any;
+  nameAdmin: any;
+  ListesProduct!: Product[];
   pages: number = 1;
   totallength: any;
   totalPrice: any;
   baseUrl = environment.apiUrl;
-  constructor(private router: Router,private route: ActivatedRoute){}
+  constructor(private _snackBar: MatSnackBar,private productservice: ProductService,private router: Router,private route: ActivatedRoute){}
 
   ngOnInit(): void {
-  this.nameAtelier = localStorage.getItem('idUser');
-
+    this.nameAdmin = localStorage.getItem('idUser');
+    this.getAllProduct();
   }
 
+  getAllProduct(){  // listes produits
+    this.productservice.getAllProduct()
+      .subscribe(
+      data => {
+        this.ListesProduct=data;
+      })
+  }
   pageChange(newPage: number){
     this.router.navigate([''],{queryParams: {page: newPage}});
   }
 }
+
+

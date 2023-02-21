@@ -1,6 +1,26 @@
 <app-header></app-header>
     <section id="pricing" class="pricing">
- hello admin
+        <div class="container">
+            <div class="section-title" data-aos="zoom-out">
+                <h2> Administrateur {{ this.nameAdmin}}</h2>
+                <p>Listes des produits à choisir </p>
+            </div>
+            <div class="col-lg-12">
+            <div class="row">
+                <div class="col-lg-4 col-md-2 d-flex align-items-stretch" *ngFor=" let item of ListesProduct  | paginate: { itemsPerPage:10, currentPage: pages,totalItems : totallength}">
+                <div class="card" style="overflow: hidden;">
+                    <div class="card-body">
+                    <h5 class="card-title" style="color:chocolate;font-weight:bold">{{item.id}}</h5>
+                    <button class="btn btn-sucess"  type="submit">choisir
+                    </button>
+                    </div>
+                </div>
+                </div>  
+            </div><br>
+            <div fxLayoutAlign="center center" class="pagination">
+                <pagination-controls (pageChange)="pages = $event"></pagination-controls>
+            </div>
+        </div>
+      </div>
       </section>      
 <app-footer></app-footer>
-
