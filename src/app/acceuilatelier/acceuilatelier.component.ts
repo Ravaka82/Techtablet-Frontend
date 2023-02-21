@@ -1,8 +1,11 @@
+import { HttpErrorResponse } from '@angular/common/http';
+import { ThisReceiver } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Product } from '../Model/Product';
+import { ProductChoice } from '../Model/ProductChoice';
 import { ProductService } from '../Service/product.service';
 
 @Component({
@@ -12,6 +15,7 @@ import { ProductService } from '../Service/product.service';
 })
 export class AcceuilatelierComponent {
   nameAdmin: any;
+  ProductChoice: ProductChoice = new ProductChoice();
   ListesProduct!: Product[];
   pages: number = 1;
   totallength: any;
@@ -24,6 +28,10 @@ export class AcceuilatelierComponent {
     this.getAllProduct();
   }
 
+  setidProduct(idProduct:any){
+    this.ProductChoice.idProduct= idProduct;
+  }
+
   getAllProduct(){  // listes produits
     this.productservice.getAllProduct()
       .subscribe(
@@ -31,6 +39,32 @@ export class AcceuilatelierComponent {
         this.ListesProduct=data;
       })
   }
+
+  chooseProduct(){
+    console.log("idproduct"+this.ProductChoice.idProduct);
+    this.productservice.productChoose(this.ProductChoice)
+    .subscribe(data => {
+      console.log(data);
+      this.ProductChoice = new ProductChoice();
+      this._snackBar.open("CHOISI ✔️✔️", 'Close',{
+        duration:2000,
+        // css matsnack bar 
+        verticalPosition: 'top',
+        horizontalPosition: 'right',
+        panelClass: ['success-alert']
+      });
+      this.router.navigate(['acceuilatelier']);
+    },
+    (error: HttpErrorResponse)=>{
+      this._snackBar.open( error.error.message , 'Close',{
+        duration:2000,
+        verticalPosition: 'top',
+        horizontalPosition: 'right',
+        panelClass: ['warning-alert']
+      });
+    }
+  )};
+
   pageChange(newPage: number){
     this.router.navigate([''],{queryParams: {page: newPage}});
   }

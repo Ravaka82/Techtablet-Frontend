@@ -27,6 +27,8 @@ import { TemplateComponent } from './template/template.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AcceuilatelierComponent } from './acceuilatelier/acceuilatelier.component';
+import { ListesProduitchoisiComponent } from './listes-produitchoisi/listes-produitchoisi.component';
+
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { AcceuilatelierComponent } from './acceuilatelier/acceuilatelier.compone
     TemplateComponent,
     HeaderComponent,
     FooterComponent,
-    AcceuilatelierComponent
+    AcceuilatelierComponent,
+    ListesProduitchoisiComponent
   ],
   imports: [
     BrowserModule,
