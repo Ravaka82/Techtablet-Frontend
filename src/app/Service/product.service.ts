@@ -14,6 +14,7 @@ export class ProductService {
   Url2=  `${this.baseUrl}/product/chooseproducts`;
   Url3=  `${this.baseUrl}/product/findProductChoice`;
   Url4=  `${this.baseUrl}/product/deleteProductChoice`;
+  Url5=  `${this.baseUrl}/product/findProductsSelected`;
 
   getAllProduct()
   {
@@ -30,5 +31,8 @@ export class ProductService {
   deleteProductChoice(_id:any)
   {
     return this.http.delete<void>(`${this.Url4}/${_id}`);
+  }
+  getProductsSelected(){
+    return this.http.get<Product[]>(this.Url5);
   }
 }

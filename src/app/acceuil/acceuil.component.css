@@ -5,11 +5,23 @@
     margin-left: 2rem;
     margin-top: 3rem;
     transition: transform 0.5s;
+    width: 450px;
+    border-color: rgb(255, 136, 0);
 }
 .card:hover{
    
     transform: scale(1.1);
     /*transform: rotatey(180deg);*/
+}
+.card-text{
+    font-size:medium;
+    font-weight: bold;
+}
+.card-title{
+   color: rgb(255, 140, 0);
+}
+.quantite{
+    width: 60px;
 }
 @keyframes hover{
     0%{
@@ -25,3 +37,5 @@
         transform: rotatey(180deg);
     } */
 }
+
+
