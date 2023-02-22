@@ -1,5 +1,4 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { ThisReceiver } from '@angular/compiler';
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -21,6 +20,7 @@ export class AcceuilatelierComponent {
   totallength: any;
   totalPrice: any;
   baseUrl = environment.apiUrl;
+  submitting: boolean = false;
   constructor(private _snackBar: MatSnackBar,private productservice: ProductService,private router: Router,private route: ActivatedRoute){}
 
   ngOnInit(): void {
@@ -33,11 +33,13 @@ export class AcceuilatelierComponent {
   }
 
   getAllProduct(){  // listes produits
+    this.submitting = true;
     this.productservice.getAllProduct()
       .subscribe(
       data => {
         this.ListesProduct=data;
       })
+      this.submitting = false;
   }
 
   chooseProduct(){

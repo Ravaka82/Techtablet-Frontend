@@ -28,6 +28,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AcceuilatelierComponent } from './acceuilatelier/acceuilatelier.component';
 import { ListesProduitchoisiComponent } from './listes-produitchoisi/listes-produitchoisi.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { ListesProduitchoisiComponent } from './listes-produitchoisi/listes-prod
     MatDialogModule,
     ReactiveFormsModule,
     MatProgressSpinnerModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    MatProgressBarModule
 
   ],
   providers: [],

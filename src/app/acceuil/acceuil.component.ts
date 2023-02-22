@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {MatSnackBar,MatSnackBarConfig} from '@angular/material/snack-bar';//fanaovana alert 
-import { HttpErrorResponse } from '@angular/common/http';
 import { Product } from '../Model/Product';
 import { environment } from 'src/environments/environment';
 import { ProductService } from '../Service/product.service';
@@ -17,23 +15,55 @@ export class AcceuilComponent implements OnInit{
   pages: number = 1;
   totallength: any;
   totalPrice: any;
-  baseUrl = environment.apiUrl;
+  submitting: boolean = false;
+  selectedCard: Product | null = null;
+  selectedQuantity: string | null = null;
+
   constructor(private productservice: ProductService,private router: Router,private route: ActivatedRoute){}
 
-  ngOnInit(): void {
-  this.nameClient = localStorage.getItem('idUser');
-  this.getListesChosesAVendre();
+  ngOnInit() {
+    this.nameClient = localStorage.getItem('idUser');
+    this.getListesChosesAVendre();
+  }
+  
+  getListesChosesAVendre() {
+    this.submitting = true;
+    this.productservice.getProductsSelected().subscribe(
+      data => {
+        this.ListesProduitSelectionner = data;
+        this.totallength = this.ListesProduitSelectionner.length;
+      },
+      error => {},
+      () => this.submitting = false
+    );
   }
 
-  getListesChosesAVendre(){
-    this.productservice.getProductsSelected()
-      .subscribe(
-      data => {
-        this.ListesProduitSelectionner=data;
-        this.totallength= this.ListesProduitSelectionner.length;
-      })
+selectCard(card: Product) {
+  this.selectedCard = card;
+  const storedQuantity = localStorage.getItem(card.id);// Récupération de la quantité précédemment sauvegardée pour le produit sélectionné
+  if (storedQuantity !== null) {
+    const quantityInput = document.getElementById('quantite') as HTMLInputElement;// Si une quantité est déjà sauvegardée pour le produit, la mettre à jour dans l'input
+    quantityInput.value = storedQuantity;
   }
-  pageChange(newPage: number){
-    this.router.navigate([''],{queryParams: {page: newPage}});
+  this.selectedQuantity = storedQuantity;
+}
+
+saveQuantity(quantity: number, productId: string) {// Ajouter une fonction pour sauvegarder la quantité dans localStorage
+  localStorage.setItem(productId, String(quantity));
+}
+
+onQuantityChange(event: any, productId: string) {
+  const quantity = event?.target?.value;
+  if (quantity !== null) {
+    this.saveQuantity(quantity, productId);
   }
+}
+
+deselectCard() {
+    this.selectedCard = null;
+}
+
+pageChange(newPage: number){
+      this.router.navigate([''],{queryParams: {page: newPage}});
+}
 }

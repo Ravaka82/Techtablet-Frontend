@@ -3,23 +3,29 @@
         <div class="container">
           <div class="section-title" data-aos="zoom-out">
             <h2>Client {{ this.nameClient}}</h2>
-            <p>Listes produits à vendre</p>
+            <p>Listes produits </p>
+            <mat-progress-bar mode="indeterminate" *ngIf="submitting"></mat-progress-bar>
           </div>
           <div class="col-lg-12">
           <div class="row">
-            <!-- <div class="col-lg-3 col-md-6 d-flex align-items-stretch" *ngFor=" let vehiculerepare of VehiculeReparer | paginate: { itemsPerPage: 8, currentPage: pages,totalItems : totallength}"> -->
              <div class="col-lg-3 col-md-6 d-flex align-items-stretch" *ngFor=" let item of ListesProduitSelectionner   | paginate: { itemsPerPage: 8, currentPage: pages,totalItems : totallength}">
-              <div class="card" style="overflow: hidden;">
+              <div class="card" style="overflow: hidden;" (click)="selectCard(item)">
                 <img [src]="item.pictures" height="200px"  class="card-img-top" alt="...">
                 <div class="card-body">
-                  <!-- <h5 class="card-title" style="color:chocolate;font-weight:bold">CLIENT : {{vehiculeAttente.vehicule.utilisateurId.nom}}</h5> -->
                   <h6 class="card-title">{{item.name}}</h6><br>
                   <p class="card-text">couleur : {{item.color.name}}</p>
                   <p class="card-text">prix : {{item.pricettc}}  €</p>
                   <p class="card-text">stock restant : {{item.stock.available}}</p>
-                  <p class="card-text">quantite : <input type="number" id="quantite" class="quantite" width="20px" name="quantite" min="1"></p>
+                  <div *ngIf="selectedCard === item">
+                    <p class="card-text">quantite : 
+                      <input type="number" id="quantite" class="quantite" width="20px" name="quantite" min="1" [value]="selectedQuantity"  (change)="onQuantityChange($event, item.id)">
+                    <button mat-icon-button >
+                      <img src="assets/images/ajout.png"  style=" transform: rotate(330deg)" width="40">
+                    </button>
+                   </p>
+                  </div>
                 </div>
-              </div>
+              </div>              
             </div>
         </div><br>
         <div fxLayoutAlign="center center" class="pagination">
