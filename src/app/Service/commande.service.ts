@@ -11,10 +11,15 @@ export class CommandeService {
   constructor(private http:HttpClient){}
   Url1= `${this.baseUrl}/product/createCommande`;
   Url2= `${this.baseUrl}/product/findCommandeById`;
+  Url3= `${this.baseUrl}/product/findAndUpdateCommands/`+localStorage.getItem('idUser');
 
   creationCommande(commande: Commande)
   {
     return this.http.post<Commande>(this.Url1,commande);
+  }
+  updateStatusCommande()
+  {
+    return this.http.post(this.Url3, null);
   }
   getCommandeParClient(utilisateurId:any){
     const repons =this.http.get<Commande[]>(`${this.Url2}/${utilisateurId}`);

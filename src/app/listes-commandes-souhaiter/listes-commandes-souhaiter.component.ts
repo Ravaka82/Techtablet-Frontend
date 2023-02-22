@@ -43,4 +43,7 @@ export class ListesCommandesSouhaiterComponent {
       return total + this.getItemTotalPrice(item);
     }, 0);
   }
+  goToInfoUser(){
+    this.router.navigate(['/infoUser']);
+  }
 }

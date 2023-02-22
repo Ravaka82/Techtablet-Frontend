@@ -38,8 +38,10 @@ export class AcceuilatelierComponent {
       .subscribe(
       data => {
         this.ListesProduct=data;
-      })
-      this.submitting = false;
+      },
+      error => {},
+      () => this.submitting = false
+    );
   }
 
   chooseProduct(){

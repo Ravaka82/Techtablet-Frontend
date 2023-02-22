@@ -3,26 +3,26 @@
     <section id="contact" class="contact">
         <div class="container">
           <div class="section-title" data-aos="zoom-out">
-            <h2>Client {{this.nameClient}}</h2>
+            <h2>Client {{this.nomClient}}</h2>
             <p>Dépot information</p>
           </div>
             <div class="col-lg-8 mt-5 mt-lg-0" data-aos="fade-left" style="margin-left: 200px">
-              <form  enctype="multipart/form-data" class="php-email-form">
+              <form (ngSubmit)="onSubmit()" enctype="multipart/form-data" class="php-email-form">
                 <div class="form-group mt-3">
                     <label for="staticEmail" class="col-sm-2 col-form-label">Nom: </label>
-                    <input type="text" class="form-control" placeholder="Nom " name="" style="margin-left: 140px;margin-top:-40px;">
+                    <input type="text" class="form-control rd" placeholder="Nom" value={{this.nomClient}} name="" style="margin-left: 140px;margin-top:-40px;">
                   </div>
                   <div class="form-group mt-3">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">prenom: </label>
-                    <input type="text" class="form-control" placeholder="prenom"  name="" style="margin-left: 140px;margin-top:-40px;">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Prenom: </label>
+                    <input type="text" class="form-control rd" placeholder="prenom" value={{this.prenomClient}}  name="" style="margin-left: 140px;margin-top:-40px;">
                   </div>
                 <div class="form-group mt-3">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">email: </label>
-                    <input type="text" class="form-control" placeholder="email"  name="" style="margin-left: 140px;margin-top:-40px;">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Email: </label>
+                    <input type="text" class="form-control rd" placeholder="email" value={{this.emailClient}} name="" style="margin-left: 140px;margin-top:-40px;">
                 </div>
                 <div class="form-group mt-3">
-                    <label for="staticEmail" class="col-sm-2 col-form-label">adresse de livraison: </label>
-                    <input type="text" class="form-control" placeholder="adresse de livraison"  name="" style="margin-left: 140px;margin-top:-40px;">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Adresse de livraison: </label>
+                    <input type="text" class="form-control" placeholder="adresse de livraison" [(ngModel)]="addresseClient" name="addresseClient" style="margin-left: 140px;margin-top:-40px;">
                 </div>
                 <div style="margin-left:900px;margin-top:10px;"><button type="submit">Valider</button></div>
               </form>

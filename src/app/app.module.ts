@@ -31,6 +31,7 @@ import { ListesProduitchoisiComponent } from './listes-produitchoisi/listes-prod
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ListesCommandesSouhaiterComponent } from './listes-commandes-souhaiter/listes-commandes-souhaiter.component';
 import { InfoUtilisateurComponent } from './info-utilisateur/info-utilisateur.component';
+import { ComfirmationPopupComponent } from './comfirmation-popup/comfirmation-popup.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { InfoUtilisateurComponent } from './info-utilisateur/info-utilisateur.co
     AcceuilatelierComponent,
     ListesProduitchoisiComponent,
     ListesCommandesSouhaiterComponent,
-    InfoUtilisateurComponent
+    InfoUtilisateurComponent,
+    ComfirmationPopupComponent
   ],
   imports: [
     BrowserModule,
