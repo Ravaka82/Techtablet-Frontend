@@ -16,9 +16,12 @@ export class UtilisateurService {
   {
     return this.http.post<Utilisateur>(this.Url1,utilisateur);
   }
+
   updateUtilisateurAddress(lieu_livraison: string, totalpayer: string) {
     const body = { lieu_livraison, totalpayer };
     return this.http.post(this.Url2, body);
   }
 }
+
+
 
