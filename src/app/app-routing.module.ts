@@ -6,6 +6,7 @@ import { TemplateComponent } from './template/template.component';
 import { AcceuilatelierComponent } from './acceuilatelier/acceuilatelier.component';
 import { ListesProduitchoisiComponent} from './listes-produitchoisi/listes-produitchoisi.component';
 import { ListesCommandesSouhaiterComponent} from './listes-commandes-souhaiter/listes-commandes-souhaiter.component';
+import {InfoUtilisateurComponent}from './info-utilisateur/info-utilisateur.component';
 
 const routes: Routes = [
   {path: 'login', component: RegisterUserComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'TechTablet', component: TemplateComponent},
   {path: 'acceuilatelier', component: AcceuilatelierComponent},
   {path: 'listesproduitchoisi', component: ListesProduitchoisiComponent},
-  {path: 'whishlist', component:ListesCommandesSouhaiterComponent}
+  {path: 'whishlist', component:ListesCommandesSouhaiterComponent},
+  {path: 'infoUser',component:InfoUtilisateurComponent},
 ];
 
 @NgModule({
