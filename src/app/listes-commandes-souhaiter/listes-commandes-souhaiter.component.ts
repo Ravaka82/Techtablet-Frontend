@@ -40,9 +40,11 @@ export class ListesCommandesSouhaiterComponent {
   // Calcule total arrondi des prix des articles
   getTotalPrice(): number {
     return this.ListesCommande.reduce((total, item) => {
+      localStorage.setItem('totalApayer', (this.roundPrice(total + this.getItemTotalPrice(item)).toString()));
       return total + this.getItemTotalPrice(item);
     }, 0);
   }
+
   goToInfoUser(){
     this.router.navigate(['/infoUser']);
   }
