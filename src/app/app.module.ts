@@ -29,6 +29,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AcceuilatelierComponent } from './acceuilatelier/acceuilatelier.component';
 import { ListesProduitchoisiComponent } from './listes-produitchoisi/listes-produitchoisi.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { ListesCommandesSouhaiterComponent } from './listes-commandes-souhaiter/listes-commandes-souhaiter.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     HeaderComponent,
     FooterComponent,
     AcceuilatelierComponent,
-    ListesProduitchoisiComponent
+    ListesProduitchoisiComponent,
+    ListesCommandesSouhaiterComponent
   ],
   imports: [
     BrowserModule,

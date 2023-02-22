@@ -16,6 +16,7 @@
           <div *ngIf="getroleUser()=='ROLE_CLIENT'">
             <ul>
             <li><a class="nav-link scrollto active" [routerLink]="['/acceuil']">Accueil client</a></li>
+            <li><a class="nav-link scrollto active" [routerLink]="['/whishlist']">Commande</a></li>
           </ul>
           </div>
           <div *ngIf="getroleUser()=='ROLE_ADMIN'">

@@ -19,7 +19,8 @@
                   <div *ngIf="selectedCard === item">
                     <p class="card-text">quantite : 
                       <input type="number" id="quantite" class="quantite" width="20px" name="quantite" min="1" [value]="selectedQuantity"  (change)="onQuantityChange($event, item.id)">
-                    <button mat-icon-button >
+                    
+                      <button mat-icon-button  (click)="setCommande(item.id_product,item.name,item.color.name,selectedQuantity,item.pricettc,this.nameClient,item.pictures)" type="submit">
                       <img src="assets/images/ajout.png"  style=" transform: rotate(330deg)" width="40">
                     </button>
                    </p>
