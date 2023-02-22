@@ -82,6 +82,8 @@ export class RegisterUserComponent implements AfterViewInit {
        const d=JSON.parse(data);
        localStorage.setItem('idUser',d.id);
        localStorage.setItem('NomUser',d.nom);
+       localStorage.setItem('PrenomUser', d.prenom);
+       localStorage.setItem('EmailUser', d.email);
        localStorage.setItem('rolesUser',d.roles);
        this.router.navigate(['/acceuil']);
        if( d.roles=="ROLE_ADMIN"){
