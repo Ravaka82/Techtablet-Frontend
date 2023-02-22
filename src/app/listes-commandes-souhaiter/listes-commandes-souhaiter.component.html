@@ -12,7 +12,6 @@
                     <th scope="col" class="text-center">id produit</th>
                     <th scope="col">image</th>
                     <th scope="col" class="text-center">nom produit</th>
-                    <th scope="col">couleur</th>
                     <th scope="col">quantite</th>
                     <th scope="col">prix</th>
                     <th scope="col">total prix</th>
@@ -23,7 +22,6 @@
                     <td>{{item.idProduct}}</td>
                     <td><img src="{{item.image}}" class="card-img-top" style="width:150px;height:150px" alt="..."></td>
                     <td style="font-weight: bold; color: coral">{{item.name}}</td>
-                    <td>{{item.color}}</td>
                     <td>{{item.quantite}}</td>
                     <td style="font-weight: bold; color: coral;">{{item.price}} €</td>
                     <td style="font-weight: bold; color: coral;">{{roundPrice(getItemTotalPrice(item))}} €</td>
