@@ -9,4 +9,6 @@ export class Commande{
     status!: Boolean;
     image!: string;
     utilisateurId!: Utilisateur;
+    utilisateur!: Utilisateur;
+    totalQuantite:any;
 }
