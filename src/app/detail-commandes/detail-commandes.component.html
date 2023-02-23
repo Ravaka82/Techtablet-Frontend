@@ -1,0 +1,32 @@
+<app-header></app-header>
+<main id="main">
+    <section id="pricing" class="pricing">
+        <div class="container">
+          <div class="section-title" data-aos="zoom-out">
+            <h2>admin</h2>
+            <p>Historiques details commandes</p>
+          </div>
+            <div class="col-lg-11 mt-5 mt-lg-0"  style="margin-left: 100px">
+                <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">nom produit</th>
+                        <th scope="col">quantite</th>
+                        <th scope="col">prix</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor=" let item of listesDetails">
+                        <th scope="row"><img src="{{item.image}}" class="card-img-top" style="width:200px;height:200px" alt="..."></th>
+                        <td style="font-weight: bold; color: coral;">{{item.name}}</td>
+                        <td>{{item.quantite}}</td>
+                        <td>{{item.price}}  €</td> 
+                      </tr>
+                    </tbody>
+                  </table>  
+            </div>  
+          </div> 
+      </section><!-- End Contact Section -->
+      
+<app-footer></app-footer>

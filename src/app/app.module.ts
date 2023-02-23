@@ -33,6 +33,7 @@ import { ListesCommandesSouhaiterComponent } from './listes-commandes-souhaiter/
 import { InfoUtilisateurComponent } from './info-utilisateur/info-utilisateur.component';
 import { ComfirmationPopupComponent } from './comfirmation-popup/comfirmation-popup.component';
 import { HistoriqueComponent } from './historique/historique.component';
+import { DetailCommandesComponent } from './detail-commandes/detail-commandes.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { HistoriqueComponent } from './historique/historique.component';
     ListesCommandesSouhaiterComponent,
     InfoUtilisateurComponent,
     ComfirmationPopupComponent,
-    HistoriqueComponent
+    HistoriqueComponent,
+    DetailCommandesComponent
   ],
   imports: [
     BrowserModule,

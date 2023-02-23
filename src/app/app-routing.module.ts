@@ -8,6 +8,7 @@ import { ListesProduitchoisiComponent} from './listes-produitchoisi/listes-produ
 import { ListesCommandesSouhaiterComponent} from './listes-commandes-souhaiter/listes-commandes-souhaiter.component';
 import {InfoUtilisateurComponent}from './info-utilisateur/info-utilisateur.component';
 import {HistoriqueComponent} from'./historique/historique.component';
+import {DetailCommandesComponent} from'./detail-commandes/detail-commandes.component';
 
 const routes: Routes = [
   {path: 'login', component: RegisterUserComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   {path: 'whishlist', component:ListesCommandesSouhaiterComponent},
   {path: 'infoUser',component:InfoUtilisateurComponent},
   {path: 'historique',component:HistoriqueComponent},
+  {path: 'detailCommande/:id',component:DetailCommandesComponent}
 ];
 
 @NgModule({

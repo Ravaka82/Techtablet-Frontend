@@ -14,12 +14,11 @@
                   <p class="card-text" style="font-size:medium;font-weight: bold;">prenom: {{item.utilisateur.prenom}} </p>
                   <p class="card-text" style="font-size:medium;font-weight: bold;">total quantite: {{item.totalQuantite}} </p>
                   <p class="card-text" style="font-size:medium;font-weight: bold;">total payer: {{item.utilisateur.totalpayer}}  €</p>
-                  <!-- <button class="btn btn-sucess" routerLink="/Historiquesreparations/{{v._id}}" type="submit">voir réparations
-                 </button> -->
+                  <button class="btn btn-sucess" routerLink="/detailCommande/{{item.utilisateur._id}}"  type="submit">voir details
+                 </button>
                 </div>
               </div>
             </div>
-            
         </div><br>
         <div fxLayoutAlign="center center" class="pagination">
           <pagination-controls (pageChange)="pages = $event"></pagination-controls>
