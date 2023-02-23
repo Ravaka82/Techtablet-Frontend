@@ -21,7 +21,7 @@ export class AcceuilComponent implements OnInit{
   totalPrice: any;
   submitting: boolean = false;
   selectedCard: Product | null = null;
-  selectedQuantity: string | null = null;
+  selectedQuantity: string | null= (this.selectedCard?.stock?.available ?? 1).toString();
   Commande: Commande = new Commande();
 
   constructor(private _snackBar: MatSnackBar,private commandeservice: CommandeService,private productservice: ProductService,private router: Router,private route: ActivatedRoute){}
@@ -67,16 +67,18 @@ export class AcceuilComponent implements OnInit{
   deselectCard() {
       this.selectedCard = null;
   }
-  setCommande(idproduct: number,name: string,color:string,quantite: string | null,price:any,utilisateurId:any,image:any){
-      this.Commande.idProduct=idproduct;
-      this.Commande.name =name;
-      this.Commande.color=color;
-      if (quantite !== null) {
-        this.Commande.quantite = parseInt(quantite);
-      }
-      this.Commande.price=price;
-      this.Commande.utilisateurId=utilisateurId;
-      this.Commande.image=image;
+  setCommande(idproduct: number, name: string, color: string, quantite: string | null, price: any, utilisateurId: any, image: any) {
+    this.Commande.idProduct=idproduct;
+    this.Commande.name =name;
+    this.Commande.color=color;
+    if (quantite !== null && quantite !== '') {
+      this.Commande.quantite = parseInt(quantite);
+    }
+    this.Commande.price=price;
+    this.Commande.utilisateurId=utilisateurId;
+    this.Commande.image=image;
+    const stock: number|undefined = this.selectedCard?.stock?.available;
+    if(stock !== undefined && stock !== 0 && quantite !== null && quantite !== '' && stock >= parseInt(quantite)) {
       this.commandeservice.creationCommande(this.Commande)
       .subscribe(data => {
         console.log(data);
@@ -98,8 +100,19 @@ export class AcceuilComponent implements OnInit{
         });
       }
     )
+    }else{
+      this._snackBar.open("Stock insuffisant", 'Close',{
+        duration:2000,
+        verticalPosition: 'top',
+        horizontalPosition: 'right',
+        panelClass: ['danger-alert']
+      });
+      this.router.navigate(['acceuil']);
+    }
+    
   };
   pageChange(newPage: number){
     this.router.navigate([''],{queryParams: {page: newPage}});
   }
+  
 }
