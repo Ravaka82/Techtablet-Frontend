@@ -14,6 +14,7 @@ export class CommandeService {
   Url3= `${this.baseUrl}/product/findAndUpdateCommands/`+localStorage.getItem('idUser');
   Url4= `${this.baseUrl}/product/getHistoriqueCommandes`;
   Url5= `${this.baseUrl}/product/detailCommande`;
+  Url6= `${this.baseUrl}/product/getHistoriqueCommandesById`;
 
   creationCommande(commande: Commande)
   {
@@ -33,6 +34,10 @@ export class CommandeService {
   }
   getDetailCommandes(utilisateurId:any){
     const repons =this.http.get<Commande[]>(`${this.Url5}/${utilisateurId}`);
+    return repons;
+  }
+  getClient(utilisateurId:any){
+    const repons =this.http.get<Commande[]>(`${this.Url6}/${utilisateurId}`);
     return repons;
   }
 }

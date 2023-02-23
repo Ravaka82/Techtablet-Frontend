@@ -1,32 +1,39 @@
 <app-header></app-header>
     <section id="pricing" class="pricing">
-        <div class="container">
-          <div class="section-title" data-aos="zoom-out">
-            <h2> admin</h2>
-            <p>Historiques commandes clients</p>
-          </div>
-          <div class="col-lg-12">
-          <div class="row">
-            <div class="col-lg-3 col-md-6 d-flex align-items-stretch" *ngFor=" let item of listesCommandes | paginate: { itemsPerPage: 8, currentPage: pages,totalItems : totallength}">
-              <div class="card" style="overflow: hidden;">
-                <div class="card-body">
-                  <h5 class="card-title" style="color:chocolate;font-weight:bold">nom: {{item.utilisateur.nom}}</h5>
-                  <p class="card-text" style="font-size:medium;font-weight: bold;">prenom: {{item.utilisateur.prenom}} </p>
-                  <p class="card-text" style="font-size:medium;font-weight: bold;">total quantite: {{item.totalQuantite}} </p>
-                  <p class="card-text" style="font-size:medium;font-weight: bold;">total payer: {{item.utilisateur.totalpayer}}  €</p>
-                  <button class="btn btn-sucess" routerLink="/detailCommande/{{item.utilisateur._id}}"  type="submit">voir details
-                 </button>
+          <div class="container">
+            <div class="section-title" data-aos="zoom-out">
+              <h2> admin</h2>
+              <p>Historiques commandes clients</p>
+            </div>
+            <form (ngSubmit)="onSubmit()">
+              <h5>hoisir client : </h5> <div class="selectdiv" >
+              <select [(ngModel)]="selectedClient" name="nom" class="select" (ngModelChange)="onClientSelect()">
+                <option *ngFor="let item1 of listes" [value]="item1.utilisateur._id">{{item1.utilisateur.nom}}</option>
+              </select><p></p>
+               <button class="btn btn-sucess"  type="submit"> rechercher </button>          
+            </div>
+            </form>
+            <div class="col-lg-12">
+            <div class="row">
+              <div class="col-lg-3 col-md-6 d-flex align-items-stretch" *ngFor=" let item of listesCommandes | paginate: { itemsPerPage: 8, currentPage: pages,totalItems : totallength}">
+                <div class="card" style="overflow: hidden;">
+                  <div class="card-body">
+                    <h5 class="card-title" style="color:chocolate;font-weight:bold">nom: {{item.utilisateur.nom}}</h5>
+                    <p class="card-text" style="font-size:medium;font-weight: bold;">prenom: {{item.utilisateur.prenom}} </p>
+                    <p class="card-text" style="font-size:medium;font-weight: bold;">total quantite: {{item.totalQuantite}} </p>
+                    <p class="card-text" style="font-size:medium;font-weight: bold;">total payer: {{item.utilisateur.totalpayer}}  €</p>
+                    <button class="btn btn-sucess" routerLink="/detailCommande/{{item.utilisateur._id}}"  type="submit">voir details
+                  </button>
+                  </div>
                 </div>
               </div>
-            </div>
-        </div><br>
-        <div fxLayoutAlign="center center" class="pagination">
-          <pagination-controls (pageChange)="pages = $event"></pagination-controls>
-         </div>
-      </div>
-      
-      </div>
-      </section>      
+          </div><br>
+          <div fxLayoutAlign="center center" class="pagination">
+            <pagination-controls (pageChange)="pages = $event"></pagination-controls>
+          </div>
+        </div>
+        </div>
+    </section>      
 <app-footer></app-footer>
 
 

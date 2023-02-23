@@ -11,11 +11,17 @@ import { CommandeService } from '../Service/commande.service';
   styleUrls: ['./historique.component.css']
 })
 export class HistoriqueComponent {
+[x: string]: any;
   nameAdmin: any;
   pages: number = 1;
   totallength: any;
   listesCommandes!: Commande[];
+  listesCommandesOneClient!: Commande[];
+  listes!: Commande[];
+  nom!: string;
   baseUrl = environment.apiUrl;
+  selectedClient: string | null = null;
+
   constructor(private servicecommande: CommandeService,private router: Router,private route: ActivatedRoute){
    }
 
@@ -28,10 +34,34 @@ export class HistoriqueComponent {
     this.servicecommande.getHistoriqueCommandes().subscribe(
     data => {
       this.listesCommandes=data;
+      this.listes=data;
       console.log(data);
       this.totallength= this.listesCommandes.length;
     }) 
   }
+  onSubmit() {
+    if (this.selectedClient) {
+      this.servicecommande.getClient(this.selectedClient).subscribe(
+        data => {
+          this.listesCommandesOneClient = data;
+          this.listesCommandes= this.listesCommandesOneClient ;
+          console.log(data);
+          this.totallength = this.listesCommandesOneClient.length;
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }
+  }
+  
+  onClientSelect() {
+    // Réinitialiser la liste des commandes pour le client sélectionné
+    this.listesCommandesOneClient = [];
+    this.totallength = 0;
+  }
+  
+  
   pageChange(newPage: number){
     this.router.navigate([''],{queryParams: {page: newPage}});
   }
